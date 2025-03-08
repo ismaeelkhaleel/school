@@ -26,7 +26,7 @@ db.connect((err) => {
         console.error('Database connection error:', err);
         return;
     }
-    console.log('✅ Connected to MySQL database');
+    console.log('Connected to MySQL database');
 });
 
 // Add School API
