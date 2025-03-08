@@ -24,7 +24,7 @@ db.connect((err) => {
   console.log('Connected to the database');
 });
 
-// 1. Add School API
+// Add School API
 app.post('/addSchool', (req, res) => {
   const { name, address, latitude, longitude } = req.body;
 
@@ -42,7 +42,7 @@ app.post('/addSchool', (req, res) => {
   });
 });
 
-// 2. List Schools API (Updated)
+// List Schools API (Updated)
 app.get('/listSchools', (req, res) => {
     const { latitude, longitude } = req.query;
   
