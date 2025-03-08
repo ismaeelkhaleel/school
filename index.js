@@ -10,18 +10,25 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // MySQL Database Connection
+require('dotenv').config();
+const mysql = require('mysql2');
+
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    port: process.env.DB_PORT
-  });
-  
+    port: process.env.DB_PORT,
+    connectTimeout: 30000, // Increase timeout (30s)
+    ssl: { rejectUnauthorized: true } // Required for Aiven Cloud
+});
 
 db.connect((err) => {
-  if (err) throw err;
-  console.log('Connected to the database');
+    if (err) {
+        console.error('Database connection error:', err);
+        return;
+    }
+    console.log('✅ Connected to MySQL database');
 });
 
 // Add School API
