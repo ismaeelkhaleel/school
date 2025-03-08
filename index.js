@@ -18,7 +18,7 @@ const db = mysql.createConnection({
     database: process.env.DB_NAME,
     port: process.env.DB_PORT,
     connectTimeout: 30000, // Increase timeout (30s)
-    ssl: { rejectUnauthorized: true } // Required for Aiven Cloud
+    ssl: { rejectUnauthorized: false } // Required for Aiven Cloud
 });
 
 db.connect((err) => {
